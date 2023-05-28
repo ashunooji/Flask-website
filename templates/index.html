@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask website</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column;">
+        <div>
+            <h1>Apple leaf disease detection</h1>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <button type="submit" onclick="disp()">Predict</button>
+            </form>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            {%if image_filename %}
+            <img src="{{url_for('static',filename=image_filename)}}" alt=""> {% endif %}
+            <br>
+        </div>
+        <div>
+            <h1>{{out}}</h1>
+        </div>
+</body>
+
+</html>
